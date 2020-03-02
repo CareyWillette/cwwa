@@ -22,12 +22,12 @@ require('dotenv').config();
 //     }
 // }));
 
-app.use(express.static(`${__dirname}/dist`));
+app.use(express.static(__dirname + '/dist'));
 
 app.listen(process.env.PORT || 8080)
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/dist/index.html`))
+  res.sendFile(path.join(__dirname + '/dist/index.html'))
 })
 
 console.log('%c Console listening on port: ' + location.pathname + ';//' + process.env.PORT ? process.env.PORT : '8080' + ': ', 'background: #41ff6b; color: #ff4700;');
