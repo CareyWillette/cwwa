@@ -22,10 +22,10 @@ const app = express();
 //     }
 // }));
 
-app.use(express.static(`${__dirname}/dist/cwws`));
+app.use(express.static(__dirname + '/dist/cwws'));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/dist/cwws/index.html`))
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/cwws/index.html'))
 })
 
 console.log('%c Console listening on port: ' + location.pathname + '://' + process.env.PORT ? process.env.PORT : '8080' + ': ', 'background: #41ff6b; color: #ff4700;');
