@@ -1,10 +1,10 @@
 const express = require('express');
-const graphqlHTTP = require('express-graphql');
-const cors = require('cors');
-const app = express();
+// const graphqlHTTP = require('express-graphql');
+// const cors = require('cors');
 const path = require('path');
+const app = express();
 // store config variables in dotenv
-require('dotenv').config();
+// require('dotenv').config();
 
 // app.use(cors()); // uncomment this to enable all CORS and delete cors(corsOptions) in below code
 // var allowedOrigins = process.env.allowedOrigins.split(',');
@@ -22,10 +22,10 @@ require('dotenv').config();
 //     }
 // }));
 
-app.use(express.static(`${__dirname}/dist`));
+app.use(express.static(__dirname + '/dist'));
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/dist/index.html`))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/dist/index.html'))
 })
 
 console.log('%c Console listening on port: ' + location.pathname + '://' + process.env.PORT ? process.env.PORT : '8080' + ': ', 'background: #41ff6b; color: #ff4700;');
