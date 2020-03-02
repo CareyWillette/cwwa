@@ -1,7 +1,7 @@
-# Cwws
+# cwws
 
-website [careywillette](https://github.com/angular/angular-cli).
+website [careywillette](https://github.com/CareyWillette/cwwa).
 
-## Details
+## updates
 
-Hold tight `details` are coming soon.
+Hold tight `more details` are coming soon.
