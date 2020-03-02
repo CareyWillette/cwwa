@@ -1,26 +1,26 @@
-const express = require('express')
-const graphqlHTTP = require('express-graphql')
-const cors = require('cors')
-const app = express()
-const path = require('path')
+const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const cors = require('cors');
+const app = express();
+const path = require('path');
 // store config variables in dotenv
-require('dotenv').config()
+require('dotenv').config();
 
 // app.use(cors()); // uncomment this to enable all CORS and delete cors(corsOptions) in below code
-var allowedOrigins = process.env.allowedOrigins.split(',');
-app.use(cors({
-    origin: function (origin, callback) {
-        // allow requests with no origin 
-        // (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
+// var allowedOrigins = process.env.allowedOrigins.split(',');
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         // allow requests with no origin 
+//         // (like mobile apps or curl requests)
+//         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) === -1) {
-            var msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    }
-}));
+//         if (allowedOrigins.indexOf(origin) === -1) {
+//             var msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
+//             return callback(new Error(msg), false);
+//         }
+//         return callback(null, true);
+//     }
+// }));
 
 app.use(express.static(`${__dirname}/dist`));
 
