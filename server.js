@@ -7,28 +7,28 @@ const path = require('path');
 require('dotenv').config();
 
 // app.use(cors()); // uncomment this to enable all CORS and delete cors(corsOptions) in below code
-// var allowedOrigins = process.env.allowedOrigins.split(',');
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         // allow requests with no origin 
-//         // (like mobile apps or curl requests)
-//         if (!origin) return callback(null, true);
+var allowedOrigins = process.env.allowedOrigins.split(',');
+app.use(cors({
+    origin: function (origin, callback) {
+        // allow requests with no origin 
+        // (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
 
-//         if (allowedOrigins.indexOf(origin) === -1) {
-//             var msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
-//             return callback(new Error(msg), false);
-//         }
-//         return callback(null, true);
-//     }
-// }));
+        if (allowedOrigins.indexOf(origin) === -1) {
+            var msg = 'The CORS policy for this site does not ' + 'allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 
-app.use(express.static(__dirname + '/dist'));
+app.use(express.static(`${__dirname}/dist`));
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/dist/index.html'))
+  res.sendFile(path.join(`${__dirname}/dist/index.html`))
 })
 
-console.log('%c Console listening on port: ' + location.pathname + ';//' + process.env.PORT ? process.env.PORT : '8080' + ': ', 'background: #41ff6b; color: #ff4700;');
+console.log('%c Console listening on port: ' + location.pathname + '://' + process.env.PORT ? process.env.PORT : '8080' + ': ', 'background: #41ff6b; color: #ff4700;');
 
 app.listen(process.env.PORT || 8080)
 
